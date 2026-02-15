@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+//分区函数
 int Paration(int a[],int left,int right){
 	int pivot=a[left];
 	while(right>left){
@@ -13,7 +13,7 @@ int Paration(int a[],int left,int right){
 	a[left]=pivot;
 	return left;
 } 
-
+//递归实现快速排序
 void quicksort(int a[],int left,int right){
 	if(left>=right)
 		return; 
@@ -27,7 +27,7 @@ void swap(int a[],int i,int j){
 	a[i]=a[j];
 	a[j]=temp;
 }
-
+//双指针快速排序
 void quicksort_plus(int a[],int left,int right){
 	if(left>=right)
 		return;
@@ -46,8 +46,8 @@ void quicksort_plus(int a[],int left,int right){
 	quicksort_plus(a,left,r);
 	quicksort_plus(a,l,right);
 } 
-
-int findK(int a[],int left,int right,int k){//Ѱ�ҵ�KС���� 
+//快速选择函数，寻找第k小的数
+int findK(int a[],int left,int right,int k){
 	if(left>right)
 		return -1;
 	int pivotpop=Paration(a,left,right);
@@ -59,7 +59,7 @@ int findK(int a[],int left,int right,int k){//Ѱ�ҵ�KС����
 		return findK(a,pivotpop+1,right,k);
 } 
 /*
-qsort���� 
+qsort以及cmp函数
 int compar(const void* p1,const void* p2) {
 	return *(int*)p1-*(int*)p2;
 }
@@ -69,6 +69,8 @@ qsort(a,10,sizeof(int),compar);
 int compar(const void* p1,const void* p2) {
 	return *(int*)p1-*(int*)p2;
 }
+
+//测试样例
 int main(){
 	int a[]={21,2498,20,79,23,8,7985,46,546,565},i=0;
 	for(i=0;i<=9;i++){
@@ -85,5 +87,6 @@ int main(){
 	printf("%d",findK(a,0,9,10));
 	return 0;
 }
+
 
 
